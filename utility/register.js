@@ -34,8 +34,10 @@ module.exports = {
 
 
         //deals with adding user to verified role
-        let pendingUser =  message.guild.member(faData.uid);
-        let verifiedRole = message.guild.roles.find("name", "Verified");
+        //obtain serverId
+        let server = client.guilds.get("105519624505831424");
+        let pendingUser =  server.members.get(message.author.id);
+        let verifiedRole = server.roles.find(role => role.name === "Verified");
         if(response.data.world === 1009){
             pendingUser.addRole(verifiedRole.id)
             message.channel.send("You're now verified!")
