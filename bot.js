@@ -12,9 +12,13 @@ const pool = require('./utility/database.js');
 const test = require('./utility/tests.js')
 const userCountUtility = require('./utility/discordSize.js')
 const registerUtility = require('./utility/register.js')
+const updateLinkUtility = require('./utility/updateLink.js')
 
 client.login(config.token)
 
+//change this per server
+let world = 1009;
+let updateLinked;
 
 client.on("ready", () => {
     console.log("Bot online!")
@@ -39,6 +43,10 @@ client.on("message",(message) => {
 
     if(message.content.match("!api")){
         registerUtility.register(message, pool, client);
+    }
+
+    if(message.content.match("!updateLink")){
+        updateLinkUtility.updateLink(message, world, updateLinked);
     }
 
 })
