@@ -72,7 +72,7 @@ client.on("message", async (message) => {
     userCountUtility.getCount(message, client);
   }
 
-  if (message.content.match("!api")) {
+  if (message.content.startsWith("!api")) {
     registerUtility.register(message, pool, client, link);
   }
 
