@@ -21,7 +21,7 @@ client.login(config.token);
 //change this per server
 let world = 1009;
 let link;
-
+let message;
 //Cron Jobs
 const CronJob = require("cron").CronJob;
 new CronJob(
