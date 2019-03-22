@@ -27,7 +27,7 @@ const CronJob = require("cron").CronJob;
 new CronJob(
   "0 45 * * * *",
   async () => {
-    link = await updateLinkUtility.updateLink(message, world, updateLinked);
+    link = await updateLinkUtility.updateLink(message, world, link);
     console.log("You will see this message every 45 minutes");
   },
   null,
@@ -38,7 +38,7 @@ new CronJob(
 new CronJob(
   "0 0 2 * * *",
   () => {
-    scanUsersUtility.scan(message, client, pool, updateLinked, world);
+    scanUsersUtility.scan(message, client, pool, link, world);
     console.log("You will see this message every 2 hours");
   },
   null,
@@ -53,9 +53,13 @@ client.on("ready", () => {
 client.on("guildMemberAdd", member => {
   member.user.send(
     "This is the FA discord." +
-      "If you're having any issues please @Chris.2688 or Chris.4527 in game" +
+      "If you're having any issues please message a moderator in discord" +
       "\n\n\n" +
-      "For verification purposes please type !api [API KEY] which can be found here -> https://account.arena.net/applications"
+      "Welcome to Fort Aspenwood! To gain full access to all voice and text channels, you will need to verify. Type the following, replacing the #### string with your own API key. \n" +
+      "!api #######-####-####-####-####################-####-####-####-############ \n" +
+      
+      "To access or generate API keys, please visit <https://account.arena.net/applications> and generate a key with the account flag. \n" +
+      "Please do not delete the API key used to verify, or you will be unverified as the bot will have no key to reference."
   );
 });
 

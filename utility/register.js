@@ -38,6 +38,8 @@ module.exports = {
         }else{
             message.channel.send("You're not apart of FA or Linked, if interested in transferring... don't.")
         }
+
+        message.delete(message)
     }
 
 }
