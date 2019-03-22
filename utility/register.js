@@ -4,6 +4,7 @@ module.exports = {
 
     register: async (message, pool, client, updateLinked) => {
         let api = message.content.replace('!api ', '');
+        message.delete(message)
         let url = `https://api.guildwars2.com/v2/account?access_token=${api}`
 
 
@@ -39,7 +40,6 @@ module.exports = {
             message.channel.send("You're not apart of FA or Linked, if interested in transferring... don't.")
         }
 
-        message.delete(message)
     }
 
 }
