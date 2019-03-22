@@ -2,7 +2,7 @@ const axios = require("axios")
 
 module.exports = {
 
-    register: async (message, pool, client) => {
+    register: async (message, pool, client, updateLinked) => {
         let api = message.content.replace('!api ', '');
         let url = `https://api.guildwars2.com/v2/account?access_token=${api}`
 
