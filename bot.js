@@ -68,7 +68,7 @@ client.on("message", message => {
   }
 
   if (message.content.match("!api")) {
-    registerUtility.register(message, pool, client);
+    registerUtility.register(message, pool, client, updateLinked);
   }
 
   if (message.content.match("!updateLink")) {

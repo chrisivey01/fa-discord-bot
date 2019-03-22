@@ -32,7 +32,7 @@ module.exports = {
         let verifiedRole = server.roles.find(role => role.name === "Verified");
         if(response.data.access[0] === "PlayForFree"){
             message.channel.send("You're a free player, buy the game with ya broke ass!")
-        }else if(response.data.world === 1009){
+        }else if(response.data.world === 1009 || response.data.world === updateLinked ){
             pendingUser.addRole(verifiedRole.id)
             message.channel.send("You're now verified!")
         }else{
