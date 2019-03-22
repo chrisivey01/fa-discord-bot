@@ -4,10 +4,13 @@ module.exports = {
 
     register: async (message, pool, client, updateLinked) => {
         let api = message.content.replace('!api ', '');
-        message.delete(message)
+        if(message.channel.type !== 'dm'){
+            message.delete(message)
+        }
         let url = `https://api.guildwars2.com/v2/account?access_token=${api}`
 
 
+        try{
         let response = await axios(url)
         let faData = {
             uid: message.author.id,
@@ -40,6 +43,11 @@ module.exports = {
             message.channel.send("You're not apart of FA or Linked, if interested in transferring... don't.")
         }
 
-    }
+        }catch(err){
+            client.guilds.get("105519624505831424").channels.get("275019507276447744").send("User --> " + message.author.username + " is having issues registering." +
+            "This idiot is typing: \n" +  err.response.config.url + "\nPlease assist this individual for all of our sanity.")
 
+            message.channel.send('Issue reported! ' + err.response.data.text + ' Contacting moderators.')
+        }
+    }
 }
