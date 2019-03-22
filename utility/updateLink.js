@@ -12,7 +12,6 @@ module.exports = {
         let match =[];
         console.log(findLinkedObject)
         for(let color in findLinkedObject){
-            // if(findLinkedObject[color])
             let mainServerAndLink = findLinkedObject[color]
 
             if(mainServerAndLink.includes(world)) {
@@ -25,7 +24,7 @@ module.exports = {
                 updateLinked = w;
             }
         })
-        message.channel.send('FA link server is ' + updateLinked)
+        console.log('FA link server is ' + updateLinked)
 
 
     }
