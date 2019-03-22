@@ -26,6 +26,7 @@ module.exports = {
         })
         console.log('FA link server is ' + updateLinked)
 
+        return updateLinked;
 
     }
 

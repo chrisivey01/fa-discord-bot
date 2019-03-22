@@ -15,6 +15,7 @@ const updateLinkUtility = require("./utility/updateLink.js");
 const messageRanksUtility = require("./utility/messageRanks.js");
 const scanUsersUtility = require("./utility/scanUsers.js");
 
+
 client.login(config.token);
 
 //change this per server
@@ -24,10 +25,10 @@ let updateLinked;
 //Cron Jobs
 const CronJob = require("cron").CronJob;
 new CronJob(
-  "0 45 1 * * *",
+  "0 45 * * * *",
   () => {
-    updateLinkUtility.updateLink(message, world, updateLinked);
-    console.log("You will see this message every 1 hour 45 minutes");
+    updateLinked = updateLinkUtility.updateLink(message, world, updateLinked);
+    console.log("You will see this message every 45 minutes");
   },
   null,
   true,

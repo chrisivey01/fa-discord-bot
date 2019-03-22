@@ -3,7 +3,7 @@ const util = require('util')
 
 var pool = mysql.createPool({
     connectionLimit: 100,
-    host: '127.0.0.1',
+    host: '18.209.63.46',
     user: 'root',
     password: 'root',
     database: 'fa_discord'
