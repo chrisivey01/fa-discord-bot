@@ -40,14 +40,14 @@ module.exports = {
             pendingUser.addRole(verifiedRole.id)
             message.channel.send("You're now verified!")
         }else{
-            message.channel.send("You're not apart of FA or Linked, if interested in transferring... don't.")
+            message.channel.send("Your account appears to not be on Fort Aspenwood or its link, or does not have a level 60+ character capable of entering WvW. Please confirm you can WvW on a character on FA or its link before reattempting to verify.")
         }
 
         }catch(err){
-            client.guilds.get("105519624505831424").channels.get("275019507276447744").send("User --> " + message.author.username + " is having issues registering. " +
+            await client.guilds.get("105519624505831424").channels.get("275019507276447744").send("User --> " + message.author.username + " is having issues registering. " +
             "This idiot is typing: \n" +  err.response.config.url + "\nPlease assist this individual for all of our sanity.")
 
-            message.channel.send('Issue reported! ' + err.response.data.text + ' Contacting moderators.')
+            await message.channel.send('Issue reported! ' + err.response.data.text + ' Contacting moderators.')
         }
     }
 }

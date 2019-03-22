@@ -25,10 +25,10 @@ let message;
 //Cron Jobs
 const CronJob = require("cron").CronJob;
 new CronJob(
-  "0 45 * * * *",
+  "0 5 * * * *",
   async () => {
     link = await updateLinkUtility.updateLink(message, world, link);
-    console.log("You will see this message every 45 minutes");
+    console.log("You will see this message every 5 minutes");
   },
   null,
   true,
