@@ -20,14 +20,14 @@ client.login(config.token);
 
 //change this per server
 let world = 1009;
-let updateLinked;
+let link;
 
 //Cron Jobs
 const CronJob = require("cron").CronJob;
 new CronJob(
   "0 45 * * * *",
-  () => {
-    updateLinked = updateLinkUtility.updateLink(message, world, updateLinked);
+  async () => {
+    link = await updateLinkUtility.updateLink(message, world, updateLinked);
     console.log("You will see this message every 45 minutes");
   },
   null,
@@ -59,7 +59,7 @@ client.on("guildMemberAdd", member => {
   );
 });
 
-client.on("message", message => {
+client.on("message", async (message) => {
   if (message.content.startsWith("hello")) {
     test.test(message);
   }
@@ -69,11 +69,11 @@ client.on("message", message => {
   }
 
   if (message.content.match("!api")) {
-    registerUtility.register(message, pool, client, updateLinked);
+    registerUtility.register(message, pool, client, link);
   }
 
   if (message.content.match("!updateLink")) {
-    updateLinked = updateLinkUtility.updateLink(message, world, updateLinked);
+    link = await updateLinkUtility.updateLink(message, world);
   }
 
   if (message.content.match("!messageRanks")) {
