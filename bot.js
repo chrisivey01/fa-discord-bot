@@ -73,7 +73,7 @@ client.on("message", message => {
   }
 
   if (message.content.match("!updateLink")) {
-    updateLinkUtility.updateLink(message, world, updateLinked);
+    updateLinked = updateLinkUtility.updateLink(message, world, updateLinked);
   }
 
   if (message.content.match("!messageRanks")) {
