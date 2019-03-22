@@ -18,7 +18,7 @@ messageVerified = (message, server, serverRoleId, client) => {
     server.members.forEach(mem => {
         if(mem._roles.includes(serverRoleId)){
             mem.removeRole(serverRoleId)
-            client.users.get(mem.user.id).send("All Verified users please reverify! Type -> !api APICODEHERE \nAny issues? Message Moderators.")
+            // client.users.get(mem.user.id).send("All Verified users please reverify! Type -> !api APICODEHERE \nAny issues? Message Moderators.")
         }
     })
 }
