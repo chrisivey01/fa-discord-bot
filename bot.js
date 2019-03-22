@@ -76,7 +76,7 @@ client.on("message", message => {
   }
 
   if (message.content.match("!messageRanks")) {
-    messageRanksUtility.messageRanks(message, client);
+    messageRanksUtility.messageRanksAndRemoveRoles(message, client);
   }
 
   if (message.content.match("!scanUsers")) {
