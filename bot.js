@@ -85,6 +85,6 @@ client.on("message", async (message) => {
   }
 
   if (message.content.match("!scanUsers")) {
-    scanUsersUtility.scan(message, client, pool, updateLinked, world);
+    scanUsersUtility.scan(message, client, pool, link, world);
   }
 });
