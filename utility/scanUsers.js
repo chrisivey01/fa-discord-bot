@@ -29,6 +29,7 @@ module.exports = {
           }
         }
       } catch (err) {
+        console.log(err)
         console.log(`${res.uid} this Discord UID has invalid API`);
         let playerFound = server.members.find(x => x.id === res.uid);
         if (playerFound) {
