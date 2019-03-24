@@ -25,7 +25,7 @@ let message;
 //Cron Jobs
 const CronJob = require("cron").CronJob;
 new CronJob(
-  "0 5 * * * *",
+  "0 */5 * * * *",
   async () => {
     link = await updateLinkUtility.updateLink(message, world, link);
     console.log("You will see this message every 5 minutes");
@@ -36,7 +36,7 @@ new CronJob(
 );
 
 new CronJob(
-  "0 0 2 * * *",
+  "0 0 */1 * * *",
   () => {
     scanUsersUtility.scan(message, client, pool, link, world);
     console.log("You will see this message every 2 hours");
