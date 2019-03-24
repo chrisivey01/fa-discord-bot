@@ -22,8 +22,8 @@ module.exports = {
         //  console.log(iterator++)
 
         
-        if (playerFound !== null || gw2Info.data.text !== 'invalid key') {
-          if (gw2Info.data.world === world || gw2Info.data.world === linkId) {
+        if (playerFound !== null) {
+          if (gw2Info.data.world === world || gw2Info.data.world === linkId && gw2Info.data.text !== 'invalid key') {
             //add role
             await playerFound.addRole(verified);
             console.log('Verified ' + v++)
