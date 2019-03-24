@@ -16,12 +16,11 @@ module.exports = {
 
     //do not foreach this, for of goes 1 by 1, foreach is everything
     for await (const res of results) {
+      let playerFound = server.members.find(x => x.id === res.uid);
+
       try {
         let gw2Info = await axios.get(gw2Api + res.api);
-        let playerFound = server.members.find(x => x.id === res.uid);
-        //  console.log(iterator++)
 
-        
         if (playerFound !== null) {
           if (gw2Info.data.world === world || gw2Info.data.world === linkId) {
             //add role
@@ -35,7 +34,12 @@ module.exports = {
           }
         }
       } catch (err) {
-        console.log(`${res.uid} this Discord UID has invalid API`);
+        if(playerFound){            
+          await playerFound.removeRole(verified);
+          console.log(`${res.uid} this Discord UID has invalid API removing their role.`);
+        }else{
+          console.log(`${res.uid} this Discord UID is no longer on the server.`);
+        }
       }
     }
   }
