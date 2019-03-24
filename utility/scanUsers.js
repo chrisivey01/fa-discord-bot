@@ -15,31 +15,35 @@ module.exports = {
     let un = 0;
 
     //do not foreach this, for of goes 1 by 1, foreach is everything
-    for await (const res of results) {
-      let playerFound = server.members.find(x => x.id === res.uid);
-
-      try {
-        let gw2Info = await axios.get(gw2Api + res.api);
-
-        if (playerFound !== null) {
-          if (gw2Info.data.world === world || gw2Info.data.world === linkId) {
-            //add role
-            await playerFound.addRole(verified);
-            console.log('Verified ' + v++)
+    setTimeout(async () => {
+      for await (const res of results) {
+        let playerFound = server.members.find(x => x.id === res.uid);
+        let gw2Info;
+        try {
+          gw2Info = await axios.get(gw2Api + res.api);
+          if (playerFound !== null) {
+            if (gw2Info.data.world === world || gw2Info.data.world === linkId) {
+              //add role
+              await playerFound.addRole(verified);
+              console.log("Verified " + v++);
+            } else {
+              //removerole
+              await playerFound.removeRole(verified);
+              console.log("Unverified " + un++);
+            }
+          }
+        } catch (err) {
+          if (playerFound) {
+            console.log(
+              `${res.uid} this Discord UID has invalid API removing their role.`
+            );
           } else {
-            //removerole
-            await playerFound.removeRole(verified);
-            console.log('Unverified ' + un++)
-
+            console.log(
+              `${res.uid} this Discord UID is no longer on the server.`
+            );
           }
         }
-      } catch (err) {
-        if(playerFound){            
-          console.log(`${res.uid} this Discord UID has invalid API removing their role.`);
-        }else{
-          console.log(`${res.uid} this Discord UID is no longer on the server.`);
-        }
       }
-    }
+    }, 500);
   }
 };
