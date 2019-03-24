@@ -21,21 +21,21 @@ module.exports = {
         let playerFound = server.members.find(x => x.id === res.uid);
         //  console.log(iterator++)
 
-        
-        if (playerFound !== null) {
-          if (gw2Info.data.world === world || gw2Info.data.world === linkId && gw2Info.data.text !== 'invalid key') {
-            //add role
-            await playerFound.addRole(verified);
-            console.log('Verified ' + v++)
-          } else {
-            //removerole
-            await playerFound.removeRole(verified);
-            console.log('Unverified ' + un++)
-
+        if (gw2Info.data.text !== "invalid key") {
+          if (playerFound !== null) {
+            if (gw2Info.data.world === world || gw2Info.data.world === linkId) {
+              //add role
+              await playerFound.addRole(verified);
+              console.log("Verified " + v++);
+            } else {
+              //removerole
+              await playerFound.removeRole(verified);
+              console.log("Unverified " + un++);
+            }
           }
         }
       } catch (err) {
-        console.log(err)
+        console.log(err);
         console.log(`${res.uid} this Discord UID has invalid API`);
         // let playerFound = server.members.find(x => x.id === res.uid);
         // if (playerFound) {
