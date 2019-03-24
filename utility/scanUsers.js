@@ -16,11 +16,10 @@ module.exports = {
 
     //do not foreach this, for of goes 1 by 1, foreach is everything
     for await (const res of results) {
-      setTimeout(async () => {
       try {
         let gw2Info = await axios.get(gw2Api + res.api);
         let playerFound = server.members.find(x => x.id === res.uid);
-        //  console.log(iterator++)Ò
+        //  console.log(iterator++)
 
         if (playerFound !== null) {
           if (gw2Info.data.world === world || gw2Info.data.world === linkId) {
@@ -42,7 +41,6 @@ module.exports = {
         //   playerFound.removeRole(verified);
         // }
       }
-    },50)
     }
   }
 };
