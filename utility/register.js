@@ -44,6 +44,7 @@ module.exports = {
         }
 
         }catch(err){
+            console.log(err)
             await client.guilds.get("105519624505831424").channels.get("275019507276447744").send("User --> " + message.author.username + " is having issues registering. " +
             "This idiot is typing: \n" +  err.response.config.url + "\nPlease assist this individual for all of our sanity.")
 
