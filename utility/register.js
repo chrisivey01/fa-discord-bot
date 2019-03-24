@@ -35,12 +35,12 @@ module.exports = {
         let pendingUser =  server.members.get(message.author.id);
         let verifiedRole = server.roles.find(role => role.name === "Verified");
         if(response.data.access[0] === "PlayForFree"){
-            message.channel.send("You're a free player, buy the game with ya broke ass!")
+            await message.channel.send("You're a free player, buy the game with ya broke ass!")
         }else if(response.data.world === 1009 || response.data.world === updateLinked ){
-            pendingUser.addRole(verifiedRole.id)
-            message.channel.send("You're now verified!")
+            await pendingUser.addRole(verifiedRole.id)
+            await message.channel.send("You're now verified!")
         }else{
-            message.channel.send("Your account appears to not be on Fort Aspenwood or its link, or does not have a level 60+ character capable of entering WvW. Please confirm you can WvW on a character on FA or its link before reattempting to verify.")
+            await message.channel.send("Your account appears to not be on Fort Aspenwood or its link, or does not have a level 60+ character capable of entering WvW. Please confirm you can WvW on a character on FA or its link before reattempting to verify.")
         }
 
         }catch(err){
