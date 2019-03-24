@@ -35,7 +35,6 @@ module.exports = {
         }
       } catch (err) {
         if(playerFound){            
-          await playerFound.removeRole(verified);
           console.log(`${res.uid} this Discord UID has invalid API removing their role.`);
         }else{
           console.log(`${res.uid} this Discord UID is no longer on the server.`);

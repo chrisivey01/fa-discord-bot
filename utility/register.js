@@ -10,6 +10,7 @@ module.exports = {
         let url = `https://api.guildwars2.com/v2/account?access_token=${api}`
 
 
+        setTimeout(async() => {
         try{
         let response = await axios(url)
         let faData = {
@@ -44,11 +45,12 @@ module.exports = {
         }
 
         }catch(err){
-            console.log(err)
             await client.guilds.get("105519624505831424").channels.get("275019507276447744").send("User --> " + message.author.username + " is having issues registering. " +
             "This idiot is typing: \n" +  err.response.config.url + "\nPlease assist this individual for all of our sanity.")
 
             await message.channel.send('Issue reported! ' + err.response.data.text + ' Contacting moderators.')
         }
+
+    }, 50)
     }
 }
