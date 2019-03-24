@@ -21,7 +21,8 @@ module.exports = {
         let playerFound = server.members.find(x => x.id === res.uid);
         //  console.log(iterator++)
 
-        if (playerFound !== null) {
+        
+        if (playerFound !== null || gw2Info.data.text !== 'invalid key') {
           if (gw2Info.data.world === world || gw2Info.data.world === linkId) {
             //add role
             await playerFound.addRole(verified);
