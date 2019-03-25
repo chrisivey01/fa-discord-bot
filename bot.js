@@ -36,12 +36,12 @@ new CronJob(
 );
 
 new CronJob(
-  // "0 0 */1 * * *",
-  "0 */1 * * * *",
+  "0 0 */12 * * *",
+  // "0 */1 * * * *",
 
   async () => {
     await scanUsersUtility.scan(message, client, pool, link, world);
-    console.log("You will see this message every 2 hours");
+    console.log("You will see this message every 12 hours");
   },
   null,
   true,
