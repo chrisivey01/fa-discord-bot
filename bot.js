@@ -36,8 +36,8 @@ new CronJob(
 );
 
 new CronJob(
-  "0 0 */1 * * *",
-  // "0 */1 * * * *",
+  // "0 0 */1 * * *",
+  "0 */1 * * * *",
 
   async () => {
     await scanUsersUtility.scan(message, client, pool, link, world);
