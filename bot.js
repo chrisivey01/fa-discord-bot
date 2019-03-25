@@ -22,13 +22,17 @@ client.login(config.token);
 let world = 1009;
 let link;
 let message;
+let pause = false;
 //Cron Jobs
 const CronJob = require("cron").CronJob;
 new CronJob(
   "0 */5 * * * *",
-  async () => {
+  async () => {  
+    if(pause){
+
     link = await updateLinkUtility.updateLink(message, world, link);
     console.log("You will see this message every 5 minutes");
+  }
   },
   null,
   true,
@@ -40,7 +44,7 @@ new CronJob(
   // "0 */1 * * * *",
 
   async () => {
-    await scanUsersUtility.scan(message, client, pool, link, world);
+    await scanUsersUtility.scan(message, client, pool, link, world, pause);
     console.log("You will see this message every 12 hours");
   },
   null,
