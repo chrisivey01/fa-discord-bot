@@ -7,7 +7,7 @@ module.exports = {
         let url = `https://api.guildwars2.com/v2/wvw/matches/overview?world=${world}`
 
         let result = await axios(url)
-        await delay(50)
+        await delay(1000)
 
         let findLinkedObject = result.data.all_worlds
 

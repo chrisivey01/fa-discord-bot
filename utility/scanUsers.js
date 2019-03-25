@@ -41,10 +41,14 @@ module.exports = {
             console.log(
               `${res.uid} this Discord UID has invalid API removing their role.`
             );
+            console.log(err)
+
           } else {
             console.log(
               `${res.uid} this Discord UID is no longer on the server.`
             );
+            console.log(err)
+
           }
         }
 
