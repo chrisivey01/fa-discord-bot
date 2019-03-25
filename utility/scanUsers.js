@@ -1,5 +1,6 @@
 const axios = require("axios");
 let gw2Api = "https://api.guildwars2.com/v2/account?access_token=";
+const delay = ms => new Promise(resolve => setTimeout(resolve,ms))
 
 module.exports = {
   scan: async (message, client, pool, linkId, world) => {
@@ -15,8 +16,10 @@ module.exports = {
     let un = 0;
 
     //do not foreach this, for of goes 1 by 1, foreach is everything
-    setTimeout(async () => {
-      for await (const res of results) {
+
+    for await (const res of results) {
+     await delay(2000)
+
         let playerFound = server.members.find(x => x.id === res.uid);
         let gw2Info;
         try {
@@ -43,7 +46,8 @@ module.exports = {
             );
           }
         }
-      }
-    }, 500);
+
+    }
   }
+
 };
