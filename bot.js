@@ -42,7 +42,7 @@ new CronJob(
   // "0 */1 * * * *",
 
   async () => {
-    await scanUsersUtility.scan(message, client, pool, link, world, delay);
+    await scanUsersUtility.scan(message, client, pool, link, world);
     console.log("You will see this message every 12 hours");
   },
   null,
@@ -80,11 +80,11 @@ client.on("message", async (message) => {
   }
 
   if (message.content.startsWith("!api")) {
-    registerUtility.register(message, pool, client, link, delay);
+    registerUtility.register(message, pool, client, link);
   }
 
   if (message.content.match("!updateLink")) {
-    link = await updateLinkUtility.updateLink(message, world, delay);
+    link = await updateLinkUtility.updateLink(message, world);
   }
 
   if (message.content.match("!messageRanks")) {
@@ -92,6 +92,6 @@ client.on("message", async (message) => {
   }
 
   if (message.content.match("!scanUsers")) {
-    scanUsersUtility.scan(message, client, pool, link, world, delay);
+    scanUsersUtility.scan(message, client, pool, link, world);
   }
 });

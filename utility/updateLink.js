@@ -1,4 +1,5 @@
 const axios = require("axios")
+const delay = ms => new Promise(resolve => setTimeout(resolve,ms))
 
 module.exports = {
 
