@@ -1,4 +1,5 @@
 const axios = require("axios")
+const delay = ms => new Promise(resolve => setTimeout(resolve,ms))
 
 module.exports = {
 
@@ -10,9 +11,9 @@ module.exports = {
         let url = `https://api.guildwars2.com/v2/account?access_token=${api}`
 
 
-        setTimeout(async() => {
         try{
         let response = await axios(url)
+        await delay(50)
         let faData = {
             uid: message.author.id,
             api: api,
@@ -51,6 +52,5 @@ module.exports = {
             await message.channel.send('Issue reported! ' + err.response.data.text + ' Contacting moderators.')
         }
 
-    }, 50)
     }
 }
