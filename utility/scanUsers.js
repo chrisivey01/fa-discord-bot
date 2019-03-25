@@ -1,9 +1,9 @@
 const axios = require("axios");
 let gw2Api = "https://api.guildwars2.com/v2/account?access_token=";
-const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+const delay = ms => new Promise(resolve => setTimeout(resolve,ms))
 
 module.exports = {
-  scan: async (message, client, pool, linkId, world, pause) => {
+  scan: async (message, client, pool, linkId, world) => {
     let queryDb = "SELECT * From fa_discord";
     let results = await pool.query(queryDb);
 
@@ -15,16 +15,15 @@ module.exports = {
     let v = 0;
     let un = 0;
 
-    pause = true;
     //do not foreach this, for of goes 1 by 1, foreach is everything
 
-    if (pause) {
-      for await (const res of results) {
+    for await (const res of results) {
+
         let playerFound = server.members.find(x => x.id === res.uid);
         let gw2Info;
         try {
           gw2Info = await axios.get(gw2Api + res.api);
-          await delay(1000);
+          await delay(1500)
 
           if (playerFound !== null) {
             if (gw2Info.data.world === world || gw2Info.data.world === linkId) {
@@ -48,8 +47,8 @@ module.exports = {
             );
           }
         }
-      }
-      pause = false
+
     }
   }
+
 };

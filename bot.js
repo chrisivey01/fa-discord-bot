@@ -28,11 +28,9 @@ const CronJob = require("cron").CronJob;
 new CronJob(
   "0 */5 * * * *",
   async () => {  
-    if(pause){
 
     link = await updateLinkUtility.updateLink(message, world, link);
     console.log("You will see this message every 5 minutes");
-  }
   },
   null,
   true,
