@@ -29,7 +29,7 @@ new CronJob(
   "0 */5 * * * *",
   async () => {  
 
-    link = await updateLinkUtility.updateLink(message, world, link);
+    link = await updateLinkUtility.updateLink(message, world, link, delay);
     console.log("You will see this message every 5 minutes");
   },
   null,
@@ -42,13 +42,16 @@ new CronJob(
   // "0 */1 * * * *",
 
   async () => {
-    await scanUsersUtility.scan(message, client, pool, link, world, pause);
+    await scanUsersUtility.scan(message, client, pool, link, world, delay);
     console.log("You will see this message every 12 hours");
   },
   null,
   true,
   "America/Chicago"
 );
+
+const delay = ms => new Promise(resolve => setTimeout(resolve,ms))
+
 
 client.on("ready", () => {
   console.log("Bot online! commands -> !updateLink || !scanUsers");
@@ -77,11 +80,11 @@ client.on("message", async (message) => {
   }
 
   if (message.content.startsWith("!api")) {
-    registerUtility.register(message, pool, client, link);
+    registerUtility.register(message, pool, client, link, delay);
   }
 
   if (message.content.match("!updateLink")) {
-    link = await updateLinkUtility.updateLink(message, world);
+    link = await updateLinkUtility.updateLink(message, world, delay);
   }
 
   if (message.content.match("!messageRanks")) {
@@ -89,6 +92,6 @@ client.on("message", async (message) => {
   }
 
   if (message.content.match("!scanUsers")) {
-    scanUsersUtility.scan(message, client, pool, link, world);
+    scanUsersUtility.scan(message, client, pool, link, world, delay);
   }
 });

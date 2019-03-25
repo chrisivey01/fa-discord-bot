@@ -1,9 +1,8 @@
 const axios = require("axios");
 let gw2Api = "https://api.guildwars2.com/v2/account?access_token=";
-const delay = ms => new Promise(resolve => setTimeout(resolve,ms))
 
 module.exports = {
-  scan: async (message, client, pool, linkId, world) => {
+  scan: async (message, client, pool, linkId, world, delay) => {
     let queryDb = "SELECT * From fa_discord";
     let results = await pool.query(queryDb);
 
