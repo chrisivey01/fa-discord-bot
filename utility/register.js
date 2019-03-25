@@ -13,7 +13,7 @@ module.exports = {
 
         try{
         let response = await axios(url)
-        await delay(500)
+        await delay(1000)
         let faData = {
             uid: message.author.id,
             api: api,
