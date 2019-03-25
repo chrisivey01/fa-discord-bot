@@ -3,7 +3,7 @@ const delay = ms => new Promise(resolve => setTimeout(resolve,ms))
 
 module.exports = {
 
-    updateLink: async (message, world, updateLinked, delay) => {
+    updateLink: async (message, world, updateLinked) => {
         let url = `https://api.guildwars2.com/v2/wvw/matches/overview?world=${world}`
 
         let result = await axios(url)
