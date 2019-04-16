@@ -18,16 +18,19 @@ obtainVerifiedRank = server => {
 };
 
 async function messageVerified (message, server, serverRoleId, client) {
-  server.members.forEach(async mem => {
+
+  let memIterator = 0;
+  for(let mem of server.members){
     try {
-      if (!await mem._roles.includes(serverRoleId)) {
+      if (!await mem[1]._roles.includes(serverRoleId)) {
+        console.log(memIterator++ + "one member has been unverified and messaged");
         await delay(500);
-        await mem.removeRole(serverRoleId);
-        await client.users.get(mem.user.id).send("All Verified users please re-verify! Chris had a huge screw up, I do apologize. Type -> !api APICODEHERE \nAny issues? Message Moderators. " +
+        await mem[1].removeRole(serverRoleId);
+        await client.users.get(mem[1].user.id).send("All Verified users please re-verify! Chris had a huge screw up, I do apologize. Type -> !api APICODEHERE \nAny issues? Message Moderators. " +
             "\n Sorry for the inconvenience once again. Blame Chris for sucking.")
       }
     } catch (err) {
       console.log(err);
     }
-  });
-};
+  }
+}
