@@ -8,12 +8,12 @@ module.exports = {
         if(message.channel.type !== 'dm'){
             message.delete(message)
         }
-        let url = `https://api.guildwars2.com/v2/account?access_token=${api}`
+        let url = `https://api.guildwars2.com/v2/account?access_token=${api}`;
 
 
         try{
-        let response = await axios(url)
-        await delay(1000)
+        let response = await axios(url);
+        await delay(1000);
         let faData = {
             uid: message.author.id,
             api: api,
@@ -27,8 +27,9 @@ module.exports = {
                 console.log(err)
             }else{
                 message.channel.send("You've been added to the FA Discord.")
+                console.log('One user has registered.')
             }
-        })
+        });
 
 
         //deals with adding user to verified role
