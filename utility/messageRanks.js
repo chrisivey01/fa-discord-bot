@@ -26,8 +26,7 @@ async function messageVerified (message, server, serverRoleId, client) {
         console.log(memIterator++ + "member has been unverified and messaged");
         await delay(500);
         await mem[1].removeRole(serverRoleId);
-        await client.users.get(mem[1].user.id).send("All Verified users please re-verify! Chris had a huge screw up, I do apologize. Type -> !api APICODEHERE \nAny issues? Message Moderators. " +
-            "\n Sorry for the inconvenience once again. Blame Chris for sucking.")
+        await client.users.get(mem[1].user.id).send("All FA users please re-verify! Type -> !api APICODEHERE \nAny issues? Message Moderators.")
       }
     } catch (err) {
       console.log(err);

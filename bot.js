@@ -87,9 +87,9 @@ client.on("message", async (message) => {
     link = await updateLinkUtility.updateLink(message, world);
   }
 
-  if (message.content.match("!messageRanks")) {
-    messageRanksUtility.messageRanksAndRemoveRoles(message, client);
-  }
+  // if (message.content.match("!messageRanks")) {
+  //   messageRanksUtility.messageRanksAndRemoveRoles(message, client);
+  // }
 
   if (message.content.match("!scanUsers")) {
     scanUsersUtility.scan(message, client, pool, link, world);
