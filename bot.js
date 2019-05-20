@@ -14,6 +14,7 @@ const registerUtility = require("./utility/register.js");
 const updateLinkUtility = require("./utility/updateLink.js");
 const messageRanksUtility = require("./utility/messageRanks.js");
 const scanUsersUtility = require("./utility/scanUsers.js");
+const thieves = require("./utility/thieves.js");
 
 
 client.login(config.token);
@@ -93,5 +94,9 @@ client.on("message", async (message) => {
 
   if (message.content.match("!scanUsers")) {
     scanUsersUtility.scan(message, client, pool, link, world);
+  }
+
+  if(message.content.match("!thieves")){
+    thieves.thieves(message, pool);
   }
 });
